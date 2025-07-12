@@ -160,7 +160,7 @@
                     Medium (1-100, 12 turns)
                 </option>
                 <option value="hard">Hard (1-200, 9 turns)</option>
-                <option value="Extra Cold Kulfi">
+                <option value="Extra Cold">
                     Extra Cold Kulfi (1-2000, 7 turns)
                 </option>
             </select>
@@ -263,7 +263,7 @@
                 } else if (difficulty === "medium") {
                     max = 100;
                     maxTurns = 12;
-                } else if (difficulty === "Extra Cold Kulfi") {
+                } else if (difficulty === "Extra Cold") {
                     max = 2000;
                     maxTurns = 7;
                 } else {
@@ -287,7 +287,7 @@
 
                 if (guess === secret) {
                     feedback.innerText = `You guessed it! The number was ${secret}!`;
-                    narrator.innerText = "Winner winner kulfi dinner! 🍗";
+                    narrator.innerText = "Winner winner kulfi dinner! 🍡";
                     correctSound.play();
                     updateHighScore();
                     updateLeaderboard(currentPlayer, turns);
