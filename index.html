@@ -173,6 +173,7 @@
             <button onclick="resetGame()">RESET</button>
             <button onclick="toggleMode()">DARK MODE</button>
             <button onclick="togglePlayer()">TOGGLE PLAYER</button>
+            <button id="installBtn" style="display: none">INSTALL APP</button>
 
             <p id="feedback"></p>
             <p id="scoreDisplay">High Score: 0</p>
@@ -371,6 +372,31 @@
                     setTimeout(() => particle.remove(), 1000);
                 }
             }
+            let deferredPrompt;
+            const installBtn = document.getElementById("installBtn");
+
+            window.addEventListener("beforeinstallprompt", (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+
+                // Show the install button
+                installBtn.style.display = "inline-block";
+
+                installBtn.addEventListener("click", () => {
+                    installBtn.style.display = "none"; // Hide after click
+                    deferredPrompt.prompt();
+
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === "accepted") {
+                            console.log("User accepted the install prompt");
+                        } else {
+                            console.log("User dismissed the install prompt");
+                        }
+                        deferredPrompt = null;
+                    });
+                });
+            });
+
             if ("serviceWorker" in navigator) {
                 window.addEventListener("load", () => {
                     navigator.serviceWorker.register("sw.js").then(
