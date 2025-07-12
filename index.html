@@ -272,8 +272,8 @@
                     max = 500;
                     maxTurns = 10;
                 } else if (difficulty === "Hell") {
-                    max 1000;
-                    maxTurns = 9
+                    max = 1000;
+                    maxTurns = 9;
                 } else {
                     max = 200;
                     maxTurns = 12;
@@ -336,7 +336,7 @@
 
             function togglePlayer() {
                 currentPlayer = currentPlayer === 1 ? 2 : 1;
-                playerDisplay.innerText = `Player:${currentPlayer}`;
+                playerDisplay.innerText = `Player${currentPlayer}`;
                 resetGame();
             }
 
