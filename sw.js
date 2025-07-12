@@ -1,7 +1,7 @@
 const CACHE_NAME = "guess-gara-v1";
 const urlsToCache = [
   "./",
-  "./guess_gara_bhai.html",
+  "./index.html",
   "./favicon.ico",
   "./manifest.json",
   "./icon-192.png",
