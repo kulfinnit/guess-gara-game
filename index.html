@@ -155,13 +155,15 @@
 
             <label for="difficulty">Difficulty:</label>
             <select id="difficulty" onchange="setDifficulty()">
-                <option value="easy">Easy (1-50, 15 turns)</option>
+                <option value="easy">Easy (1-50, 18 turns)</option>
                 <option value="medium" selected>
-                    Medium (1-100, 12 turns)
+                    Medium (1-100, 15 turns)
                 </option>
-                <option value="hard">Hard (1-200, 9 turns)</option>
-                <option value="Extra Cold">
-                    Extra Cold Kulfi (1-2000, 7 turns)
+                <option value="hard">Hard (1-200, 12 turns)</option>
+                <option value="Extreme">Extreme (1-500, 10 turns</option>
+                <option value="Hell">Hell (1-1000, 9 turns</option>
+                <option value="Extra Cold Kulfi">
+                    Extra Cold Kulfi (1-1500, 7 turns)
                 </option>
             </select>
             <br />
@@ -259,16 +261,22 @@
                 const difficulty = document.getElementById("difficulty").value;
                 if (difficulty === "easy") {
                     max = 50;
-                    maxTurns = 15;
+                    maxTurns = 18;
                 } else if (difficulty === "medium") {
                     max = 100;
-                    maxTurns = 12;
+                    maxTurns = 15;
                 } else if (difficulty === "Extra Cold") {
-                    max = 2000;
+                    max = 1500;
                     maxTurns = 7;
+                } else if (difficulty === "Extreme") {
+                    max = 500;
+                    maxTurns = 10;
+                } else if (difficulty === "Hell") {
+                    max 1000;
+                    maxTurns = 9
                 } else {
                     max = 200;
-                    maxTurns = 9;
+                    maxTurns = 12;
                 }
                 resetGame();
             }
@@ -328,7 +336,7 @@
 
             function togglePlayer() {
                 currentPlayer = currentPlayer === 1 ? 2 : 1;
-                playerDisplay.innerText = `Player: ${currentPlayer}`;
+                playerDisplay.innerText = `Player:${currentPlayer}`;
                 resetGame();
             }
 
@@ -343,7 +351,7 @@
             function updateLeaderboard(player, score) {
                 leaderboard.push({ player: player, score: score });
                 leaderboard.sort((a, b) => b.score - a.score);
-                leaderboard = leaderboard.slice(0, 5);
+                leaderboard = leaderboard.slice(0, 3);
                 localStorage.setItem(
                     "leaderboard",
                     JSON.stringify(leaderboard),
@@ -355,7 +363,7 @@
                 leaderboardDisplay.innerHTML = "";
                 leaderboard.forEach((entry, index) => {
                     const li = document.createElement("li");
-                    li.textContent = `${index + 1} - Player ${entry.player}: ${entry.score}`;
+                    li.textContent = `Player${entry.player}: ${entry.score}`;
                     leaderboardDisplay.appendChild(li);
                 });
             }
