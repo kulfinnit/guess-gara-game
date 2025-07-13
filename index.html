@@ -100,6 +100,10 @@
             button:hover {
                 transform: scale(1.1);
             }
+            button.forget {
+                background-color: maroon;
+                color: #fff;
+            }
 
             .shake {
                 animation: shake 0.4s;
@@ -175,6 +179,7 @@
             <button onclick="resetGame()">RESET</button>
             <button onclick="toggleMode()">DARK MODE</button>
             <button onclick="togglePlayer()">TOGGLE PLAYER</button>
+            <button class="forget" onclick="clearData()">FORGET</button>
             <button id="installBtn" style="display: none">INSTALL APP</button>
 
             <p id="feedback"></p>
@@ -327,6 +332,12 @@
                 feedback.innerText = "";
                 narrator.innerText = `Guess a number between 1 and ${max}. You have ${turns} turns.`;
                 turnDisplay.innerText = `Turns Remaining: ${turns}`;
+            }
+            function clearData() {
+                if (confirm("Are you sure you want to forget everything?")) {
+                    localStorage.clear();
+                    location.reload();
+                }
             }
 
             function toggleMode() {
