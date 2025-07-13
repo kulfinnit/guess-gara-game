@@ -1,4 +1,4 @@
-const CACHE_NAME = "guess-gara-v1";
+const CACHE_NAME = "guess-gara-v2";
 const urlsToCache = [
   "./",
   "./index.html",
