@@ -164,10 +164,13 @@
                     Medium (1-100, 15 turns)
                 </option>
                 <option value="hard">Hard (1-200, 12 turns)</option>
-                <option value="Extreme">Extreme (1-500, 10 turns</option>
-                <option value="Hell">Hell (1-1000, 9 turns</option>
+                <option value="Extreme">Extreme (1-500, 10 turns)</option>
+                <option value="Hell">Hell (1-1000, 9 turns)</option>
                 <option value="Extra Cold Kulfi">
                     Extra Cold Kulfi (1-1500, 7 turns)
+                </option>
+                <option value="double or nothing">
+                    Double or Nothing for Rs.2000
                 </option>
             </select>
             <br />
@@ -279,6 +282,9 @@
                 } else if (difficulty === "Hell") {
                     max = 1000;
                     maxTurns = 9;
+                } else if (difficulty === "double or nothing") {
+                    max = 2000;
+                    maxTurns = 6;
                 } else {
                     max = 200;
                     maxTurns = 12;
@@ -294,13 +300,27 @@
                 }
 
                 if (turns <= 0) {
-                    narrator.innerText = "Thukka! Reset to try again.";
+                    const difficulty =
+                        document.getElementById("difficulty").value;
+                    if (difficulty === "double or nothing") {
+                        narrator.innerText = "Reset again bro u got Rs.0";
+                    } else {
+                        narrator.innerText = "Thukka! Reset to try again.";
+                    }
+
                     return;
                 }
 
                 if (guess === secret) {
                     feedback.innerText = `You guessed it! The number was ${secret}!`;
-                    narrator.innerText = "Winner winner kulfi dinner! 🍡";
+                    const difficulty =
+                        document.getElementById("difficulty").value;
+                    if (difficulty === "double or nothing") {
+                        narrator.innerText =
+                            "Congratulations! You just won Rs.2000";
+                    } else {
+                        narrator.innerText = "Winner winner kulfi dinner! 🍡";
+                    }
                     correctSound.play();
                     updateHighScore();
                     updateLeaderboard(currentPlayer, turns);
@@ -317,7 +337,13 @@
                     wrongSound.play();
 
                     if (turns === 0) {
-                        narrator.innerText = `Sakenau baa! The number was ${secret}.`;
+                        const difficulty =
+                            document.getElementById("difficulty").value;
+                        if (difficulty === "double or nothing") {
+                            narrator.innerText = `Mr.0 rupya, the number was ${secret}.`;
+                        } else {
+                            narrator.innerText = `Sakenau baa! The number was ${secret}.`;
+                        }
                         gameOverSound.play();
                     }
                 }
