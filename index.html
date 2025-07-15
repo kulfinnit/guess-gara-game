@@ -152,10 +152,8 @@
 
         <!-- Main game container -->
         <div class="container" style="display: none" id="mainGame">
-            <h1>Complete All levels for Rs.1000</h1>
-            <p id="narrator">
-                Extra Cold Kulfi level ma guess gareu bhane khaja!
-            </p>
+            <h1>Beat All levels for 10% Off</h1>
+            <p id="narrator">On my services of course</p>
 
             <label for="difficulty">Difficulty:</label>
             <select id="difficulty" onchange="setDifficulty()">
@@ -170,7 +168,7 @@
                     Extra Cold Kulfi (1-1500, 7 turns)
                 </option>
                 <option value="double or nothing">
-                    Double or Nothing for Rs.2000
+                    Double or Nothing for 20%
                 </option>
             </select>
             <br />
@@ -295,7 +293,7 @@
             function checkGuess() {
                 const guess = parseInt(guessInput.value);
                 if (isNaN(guess)) {
-                    narrator.innerText = "Number bhanya bujhdaina lato!";
+                    narrator.innerText = "Number please!";
                     return;
                 }
 
@@ -303,9 +301,9 @@
                     const difficulty =
                         document.getElementById("difficulty").value;
                     if (difficulty === "double or nothing") {
-                        narrator.innerText = "Reset again bro u got Rs.0";
+                        narrator.innerText = "Reset again! You lost!";
                     } else {
-                        narrator.innerText = "Thukka! Reset to try again.";
+                        narrator.innerText = "Haha! Reset to try again.";
                     }
 
                     return;
@@ -317,7 +315,7 @@
                         document.getElementById("difficulty").value;
                     if (difficulty === "double or nothing") {
                         narrator.innerText =
-                            "Congratulations! You just won Rs.2000";
+                            "Congratulations! You just won 20% discount!";
                     } else {
                         narrator.innerText = "Winner winner kulfi dinner! 🍡";
                     }
@@ -340,9 +338,9 @@
                         const difficulty =
                             document.getElementById("difficulty").value;
                         if (difficulty === "double or nothing") {
-                            narrator.innerText = `Mr.0 rupya, the number was ${secret}.`;
+                            narrator.innerText = `Haha almost!, the number was ${secret}.`;
                         } else {
-                            narrator.innerText = `Sakenau baa! The number was ${secret}.`;
+                            narrator.innerText = `Try again! The number was ${secret}.`;
                         }
                         gameOverSound.play();
                     }
