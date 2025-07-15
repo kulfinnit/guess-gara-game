@@ -329,8 +329,8 @@
                     setTimeout(() => feedback.classList.remove("shake"), 400);
                     feedback.innerText =
                         guess < secret
-                            ? "Kam bho! Aim higher!"
-                            : "Dher bho! Chill down!";
+                            ? "Too low! Aim higher!"
+                            : "Too high! Chill down!";
                     narrator.innerText = `Turns left: ${turns}`;
                     wrongSound.play();
 
